@@ -1,0 +1,741 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0F172A">
+    <meta name="description" content="مولد كلمات المرور الآمن - باسوردك في جيبك">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi2KjYp9iz2YjYsdiv2YMg2YHZiiDYrNmK2KjZgyIsInNob3J0X25hbWUiOiLYqNin2LPZiNix2K/ZgyIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMEYxNzJBIiwidGhlbWVfY29sb3IiOiIjM0I4MkY2IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1USTRJaUJvWldsbmFIUTlJakV5T0NJZ2RtbGxkMEp2ZUQwaU1DQXdJREV5T0NBeU9DSWdabWxzYkQwaUl6TkNPREpHTmlJK1BISmxZM1FnZUQwaU1qUWlJSGs5SWpJMElpQjNhV1IwYUQwaU9EQWlJR2hsYVdkb2REMGlPREFpSUhKNFBTSTRJaUJtYVd4c1BTSWpabVptSWk4K1BDOXpkbWMrIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwiLCJzaXplcyI6IjEyOHgxMjgifV19">
+    
+    <title>باسوردك في جيبك - مولد كلمات المرور الآمن</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .glassmorphic {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .strength-weak { @apply bg-red-500; }
+        .strength-medium { @apply bg-yellow-500; }
+        .strength-strong { @apply bg-green-500; }
+        
+        /* Custom scrollbar for mobile */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-slate-900 text-slate-50 font-sans overflow-x-hidden">
+    <!-- Background Video -->
+    <div class="fixed inset-0 z-0">
+        <video autoplay muted loop class="w-full h-full object-cover opacity-20">
+            <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35204b5f8bb3&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/80"></div>
+    </div>
+
+    <!-- Intro Video Container -->
+    <div id="intro-container" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900">
+        <div class="text-center px-6">
+            <div class="w-32 h-32 mx-auto mb-8 rounded-full glassmorphic flex items-center justify-center">
+                <svg class="w-16 h-16 text-primary-500 animate-pulse-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-violet-400">
+                باسوردك في جيبك
+            </h1>
+            <p class="text-slate-300 text-lg mb-8">مولد كلمات المرور الآمن</p>
+            <div class="w-64 h-2 bg-slate-700 rounded-full mx-auto overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-primary-500 to-violet-500 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="main-app" class="relative z-10 min-h-screen hidden">
+        <!-- Header -->
+        <header class="sticky top-0 z-40 glassmorphic border-b border-white/10">
+            <div class="max-w-md mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary-500 to-violet-500 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <h1 class="text-xl font-bold">باسوردك في جيبك</h1>
+                    </div>
+                    <button id="menu-btn" class="p-2 rounded-lg hover:bg-white/5 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-md mx-auto px-6 py-8 space-y-8">
+            <!-- Welcome Section -->
+            <section class="text-center animate-fade-in">
+                <h2 class="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-violet-400">
+                    اختر قوة كلمة المرور
+                </h2>
+                <p class="text-slate-300 mb-6">انشئ كلمة مرور آمنة ومخصصة لاحتياجاتك</p>
+            </section>
+
+            <!-- Strength Selection -->
+            <section class="animate-slide-up">
+                <div class="glassmorphic rounded-2xl p-6 space-y-4">
+                    <label class="block text-sm font-medium text-slate-300 mb-4">مستوى الأمان</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="strength-btn p-4 rounded-xl border-2 border-slate-600 hover:border-primary-500 transition-all duration-200" data-strength="easy">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <span class="font-medium">سهلة</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1 text-right">للاستخدام العادي</p>
+                        </button>
+                        
+                        <button class="strength-btn p-4 rounded-xl border-2 border-slate-600 hover:border-primary-500 transition-all duration-200" data-strength="medium">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-orange-500"></div>
+                                <span class="font-medium">متوسطة</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1 text-right">حماية أفضل</p>
+                        </button>
+                        
+                        <button class="strength-btn p-4 rounded-xl border-2 border-slate-600 hover:border-primary-500 transition-all duration-200" data-strength="strong">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="font-medium">قوية</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1 text-right">أمان عالي</p>
+                        </button>
+                        
+                        <button class="strength-btn p-4 rounded-xl border-2 border-slate-600 hover:border-primary-500 transition-all duration-200" data-strength="random">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-purple-500"></div>
+                                <span class="font-medium">عشوائية</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1 text-right">أقصى حماية</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Questions Section -->
+            <section id="questions-section" class="hidden animate-slide-up">
+                <div class="glassmorphic rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold">الأسئلة المطلوبة</h3>
+                        <div class="flex items-center gap-2">
+                            <span id="question-counter" class="text-sm text-slate-300">1 من 3</span>
+                            <div class="w-8 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                <div id="question-progress" class="h-full bg-gradient-to-r from-primary-500 to-violet-500 rounded-full transition-all duration-300" style="width: 33%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="current-question" class="space-y-4">
+                        <!-- Dynamic question content -->
+                    </div>
+                    
+                    <div class="flex gap-3 mt-6">
+                        <button id="prev-btn" class="flex-1 px-4 py-3 rounded-xl border border-slate-600 text-slate-300 hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            السابق
+                        </button>
+                        <button id="next-btn" class="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium hover:from-primary-600 hover:to-primary-700 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                            التالي
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Random Generation Section -->
+            <section id="random-section" class="hidden animate-slide-up">
+                <div class="glassmorphic rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-violet-500 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">كلمة مرور عشوائية</h3>
+                    <p class="text-slate-300 mb-6">سيتم إنشاء كلمة مرور قوية وعشوائية</p>
+                    <button id="generate-random-btn" class="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-violet-500 text-white font-medium hover:from-purple-600 hover:to-violet-600 transition-all transform hover:scale-105">
+                        إنشاء كلمة مرور
+                    </button>
+                </div>
+            </section>
+
+            <!-- Password Result Section -->
+            <section id="result-section" class="hidden animate-bounce-in">
+                <div class="glassmorphic rounded-2xl p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">كلمة المرور جاهزة!</h3>
+                    </div>
+                    
+                    <!-- Password Display -->
+                    <div class="bg-slate-800 rounded-xl p-4 mb-4 relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-slate-400">كلمة المرور</span>
+                            <div id="strength-indicator" class="flex items-center gap-2">
+                                <div class="flex gap-1">
+                                    <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                                    <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                                    <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                                    <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                                </div>
+                                <span id="strength-text" class="text-xs text-slate-400"></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <code id="generated-password" class="flex-1 text-lg font-mono bg-transparent text-primary-300 selection:bg-primary-500/20">
+                                <!-- Generated password will appear here -->
+                            </code>
+                            <button id="toggle-visibility" class="p-2 rounded-lg hover:bg-slate-700 transition-colors" title="إظهار/إخفاء كلمة المرور">
+                                <svg id="eye-icon" class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <button id="copy-btn" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary-500 text-white font-medium hover:bg-primary-600 transition-all transform hover:scale-105">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            نسخ
+                        </button>
+                        <button id="download-btn" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 text-slate-300 hover:bg-slate-700 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            تحميل
+                        </button>
+                    </div>
+                    
+                    <button id="restart-btn" class="w-full px-4 py-3 rounded-xl border border-slate-600 text-slate-300 hover:bg-slate-700 transition-colors">
+                        إنشاء كلمة مرور جديدة
+                    </button>
+                </div>
+            </section>
+
+            <!-- Social Link -->
+            <section class="text-center">
+                <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glassmorphic hover:bg-white/10 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                    </svg>
+                    تابعنا هنا
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 rounded-xl glassmorphic text-white hidden animate-slide-up">
+        <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span id="toast-message">تم نسخ كلمة المرور!</span>
+        </div>
+    </div>
+
+    <script>
+        // App State
+        let currentStrength = '';
+        let currentQuestionIndex = 0;
+        let answers = [];
+        let questions = [];
+        let generatedPassword = '';
+        let isPasswordVisible = false;
+
+        // Question Sets
+        const questionSets = {
+            easy: [
+                { label: 'ما هو تاريخ ميلادك؟', id: 'birth', placeholder: 'مثال: 15/05/1990' },
+                { label: 'ما هو رقم تليفونك؟', id: 'phone', placeholder: 'مثال: 0123456789' },
+                { label: 'ما هو تاريخ ذكرى سعيدة؟', id: 'memory', placeholder: 'مثال: 10/12/2020' }
+            ],
+            medium: [
+                { label: 'اختر اسم (مثلاً اسمك أو اسم بنتك):', id: 'name', placeholder: 'مثال: أحمد' },
+                { label: 'رقم أو تاريخ أو رقم مميز عندك:', id: 'mediumNumber', placeholder: 'مثال: 2023' }
+            ],
+            strong: [
+                { label: 'اكتب اسم بالإنجليزية:', id: 'engName', placeholder: 'مثال: Ahmed' },
+                { label: 'رقم مميز جدًا:', id: 'specialNum', placeholder: 'مثال: 1234' },
+                { label: 'أول حرفين من اسمك بالإنجليزية:', id: 'initials', placeholder: 'مثال: AH' },
+                { label: 'اكتب حرف مميز:', id: 'char1', placeholder: 'مثال: A' },
+                { label: 'اكتب رقمين مميزين:', id: 'digits', placeholder: 'مثال: 99' },
+                { label: 'حرف مميز آخر:', id: 'char2', placeholder: 'مثال: Z' }
+            ]
+        };
+
+        // DOM Elements
+        const introContainer = document.getElementById('intro-container');
+        const mainApp = document.getElementById('main-app');
+        const progressBar = document.getElementById('progress-bar');
+        const strengthBtns = document.querySelectorAll('.strength-btn');
+        const questionsSection = document.getElementById('questions-section');
+        const randomSection = document.getElementById('random-section');
+        const resultSection = document.getElementById('result-section');
+        const currentQuestionDiv = document.getElementById('current-question');
+        const questionCounter = document.getElementById('question-counter');
+        const questionProgress = document.getElementById('question-progress');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const generateRandomBtn = document.getElementById('generate-random-btn');
+        const generatedPasswordEl = document.getElementById('generated-password');
+        const strengthIndicator = document.getElementById('strength-indicator');
+        const strengthText = document.getElementById('strength-text');
+        const toggleVisibilityBtn = document.getElementById('toggle-visibility');
+        const eyeIcon = document.getElementById('eye-icon');
+        const copyBtn = document.getElementById('copy-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        // Initialize App
+        function initApp() {
+            // Show loading animation
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(showMainApp, 500);
+                }
+                progressBar.style.width = progress + '%';
+            }, 200);
+        }
+
+        function showMainApp() {
+            introContainer.classList.add('hidden');
+            mainApp.classList.remove('hidden');
+            // Register service worker for PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('data:text/javascript;base64,');
+            }
+        }
+
+        // Strength Selection
+        strengthBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active state from all buttons
+                strengthBtns.forEach(b => {
+                    b.classList.remove('border-primary-500', 'bg-primary-500/10');
+                    b.classList.add('border-slate-600');
+                });
+                
+                // Add active state to clicked button
+                btn.classList.remove('border-slate-600');
+                btn.classList.add('border-primary-500', 'bg-primary-500/10');
+                
+                currentStrength = btn.dataset.strength;
+                hideAllSections();
+                
+                if (currentStrength === 'random') {
+                    randomSection.classList.remove('hidden');
+                } else {
+                    questions = questionSets[currentStrength];
+                    currentQuestionIndex = 0;
+                    answers = [];
+                    showQuestionsSection();
+                }
+                
+                // Haptic feedback for mobile
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
+            });
+        });
+
+        function hideAllSections() {
+            questionsSection.classList.add('hidden');
+            randomSection.classList.add('hidden');
+            resultSection.classList.add('hidden');
+        }
+
+        function showQuestionsSection() {
+            questionsSection.classList.remove('hidden');
+            updateQuestion();
+        }
+
+        function updateQuestion() {
+            const question = questions[currentQuestionIndex];
+            const totalQuestions = questions.length;
+            
+            questionCounter.textContent = `${currentQuestionIndex + 1} من ${totalQuestions}`;
+            questionProgress.style.width = `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`;
+            
+            currentQuestionDiv.innerHTML = `
+                <label class="block text-sm font-medium text-slate-300 mb-2">${question.label}</label>
+                <input 
+                    type="text" 
+                    id="${question.id}" 
+                    placeholder="${question.placeholder}"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-600 text-white placeholder-slate-400 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 focus:outline-none transition-all"
+                    autocomplete="off"
+                >
+            `;
+            
+            // Focus on input and set previous answer if exists
+            const input = document.getElementById(question.id);
+            input.focus();
+            if (answers[currentQuestionIndex]) {
+                input.value = answers[currentQuestionIndex];
+            }
+            
+            // Update button states
+            prevBtn.disabled = currentQuestionIndex === 0;
+            prevBtn.classList.toggle('opacity-50', currentQuestionIndex === 0);
+            
+            // Add input validation
+            input.addEventListener('input', validateCurrentInput);
+            validateCurrentInput();
+        }
+
+        function validateCurrentInput() {
+            const input = currentQuestionDiv.querySelector('input');
+            const isValid = input.value.trim().length > 0;
+            
+            nextBtn.disabled = !isValid;
+            nextBtn.classList.toggle('opacity-50', !isValid);
+            nextBtn.classList.toggle('cursor-not-allowed', !isValid);
+        }
+
+        // Navigation
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                saveCurrentAnswer();
+                currentQuestionIndex--;
+                updateQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            saveCurrentAnswer();
+            
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                updateQuestion();
+            } else {
+                // Generate password
+                generatePasswordFromAnswers();
+            }
+        });
+
+        function saveCurrentAnswer() {
+            const input = currentQuestionDiv.querySelector('input');
+            answers[currentQuestionIndex] = input.value.trim();
+        }
+
+        // Password Generation
+        generateRandomBtn.addEventListener('click', () => {
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+            let password = "";
+            
+            // Ensure at least one of each type
+            const lowercase = "abcdefghijklmnopqrstuvwxyz";
+            const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const numbers = "0123456789";
+            const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+            
+            password += lowercase[Math.floor(Math.random() * lowercase.length)];
+            password += uppercase[Math.floor(Math.random() * uppercase.length)];
+            password += numbers[Math.floor(Math.random() * numbers.length)];
+            password += symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Fill the rest randomly
+            for (let i = 4; i < 16; i++) {
+                password += charset[Math.floor(Math.random() * charset.length)];
+            }
+            
+            // Shuffle the password
+            generatedPassword = password.split('').sort(() => Math.random() - 0.5).join('');
+            showPasswordResult();
+        });
+
+        function generatePasswordFromAnswers() {
+            let password = '';
+            
+            switch (currentStrength) {
+                case 'easy':
+                    password = answers[0].slice(0,2) + answers[1].slice(-4) + answers[2].slice(0,4);
+                    break;
+                case 'medium':
+                    password = answers[0] + answers[1] + '@' + new Date().getFullYear().toString().slice(-2);
+                    break;
+                case 'strong':
+                    password = `${answers[0]}.${answers[1]}${answers[2]}*#${answers[3].toUpperCase()}${answers[3].toLowerCase()}${answers[4]}${answers[5].toUpperCase()}${answers[5].toLowerCase()}@2024`;
+                    break;
+            }
+            
+            generatedPassword = password;
+            showPasswordResult();
+        }
+
+        function showPasswordResult() {
+            hideAllSections();
+            resultSection.classList.remove('hidden');
+            
+            // Display password (masked initially)
+            updatePasswordDisplay();
+            
+            // Show strength indicator
+            updateStrengthIndicator();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate([100, 50, 100]);
+            }
+        }
+
+        function updatePasswordDisplay() {
+            if (isPasswordVisible) {
+                generatedPasswordEl.textContent = generatedPassword;
+                eyeIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L12 12m-2.122-2.122L7.76 7.76m4.242 4.242L12 12m0 0l2.122 2.122M12 12L9.878 9.878"/>
+                `;
+            } else {
+                generatedPasswordEl.textContent = '•'.repeat(generatedPassword.length);
+                eyeIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                `;
+            }
+        }
+
+        function updateStrengthIndicator() {
+            const strength = calculatePasswordStrength(generatedPassword);
+            const indicators = strengthIndicator.querySelectorAll('.w-2');
+            
+            // Reset all indicators
+            indicators.forEach(indicator => {
+                indicator.className = 'w-2 h-2 rounded-full bg-slate-600';
+            });
+            
+            // Fill indicators based on strength
+            let color = 'bg-red-500';
+            let text = 'ضعيفة';
+            let filled = 1;
+            
+            if (strength >= 80) {
+                color = 'bg-green-500';
+                text = 'قوية جداً';
+                filled = 4;
+            } else if (strength >= 60) {
+                color = 'bg-green-400';
+                text = 'قوية';
+                filled = 3;
+            } else if (strength >= 40) {
+                color = 'bg-yellow-500';
+                text = 'متوسطة';
+                filled = 2;
+            }
+            
+            for (let i = 0; i < filled; i++) {
+                indicators[i].className = `w-2 h-2 rounded-full ${color}`;
+            }
+            
+            strengthText.textContent = text;
+        }
+
+        function calculatePasswordStrength(password) {
+            let score = 0;
+            
+            // Length check
+            if (password.length >= 8) score += 20;
+            if (password.length >= 12) score += 10;
+            if (password.length >= 16) score += 10;
+            
+            // Character variety
+            if (/[a-z]/.test(password)) score += 15;
+            if (/[A-Z]/.test(password)) score += 15;
+            if (/[0-9]/.test(password)) score += 15;
+            if (/[^A-Za-z0-9]/.test(password)) score += 15;
+            
+            return Math.min(score, 100);
+        }
+
+        // Password Actions
+        toggleVisibilityBtn.addEventListener('click', () => {
+            isPasswordVisible = !isPasswordVisible;
+            updatePasswordDisplay();
+        });
+
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(generatedPassword);
+                showToast('تم نسخ كلمة المرور!');
+                
+                // Visual feedback
+                copyBtn.classList.add('bg-green-500');
+                setTimeout(() => {
+                    copyBtn.classList.remove('bg-green-500');
+                }, 1000);
+                
+                // Haptic feedback
+                if (navigator.vibrate) {
+                    navigator.vibrate(100);
+                }
+            } catch (err) {
+                showToast('فشل في نسخ كلمة المرور');
+            }
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const blob = new Blob([generatedPassword], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `password_${new Date().toISOString().slice(0,10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('تم تحميل كلمة المرور!');
+        });
+
+        restartBtn.addEventListener('click', () => {
+            // Reset all state
+            currentStrength = '';
+            currentQuestionIndex = 0;
+            answers = [];
+            questions = [];
+            generatedPassword = '';
+            isPasswordVisible = false;
+            
+            // Reset UI
+            strengthBtns.forEach(btn => {
+                btn.classList.remove('border-primary-500', 'bg-primary-500/10');
+                btn.classList.add('border-slate-600');
+            });
+            
+            hideAllSections();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Install PWA prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button if needed
+            // showInstallButton();
+        });
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+
+        // Handle Enter key in inputs
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const activeInput = document.activeElement;
+                if (activeInput.tagName === 'INPUT' && !nextBtn.disabled) {
+                    nextBtn.click();
+                }
+            }
+        });
+
+        // Prevent zoom on double tap for iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (event) => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
